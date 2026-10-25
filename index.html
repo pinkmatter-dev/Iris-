@@ -1,0 +1,1088 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iris' | A Little World</title>
+
+<style>
+:root {
+    --rose: #c7839e;
+    --deep: #80546a;
+    --text: #684657;
+    --muted: #ad8999;
+    --line: #ead5df;
+    --card: rgba(255,255,255,.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #fff0f5;
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+button {
+    font: inherit;
+}
+
+@keyframes pinkGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ENTRANCE */
+
+#entrance {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+
+    background: linear-gradient(
+        -45deg,
+        #fff0f5,
+        #f8d7e6,
+        #eec4e8,
+        #fbe4ed,
+        #f3c6dc
+    );
+
+    background-size: 400% 400%;
+    animation: pinkGradient 16s ease infinite;
+
+    opacity: 1;
+    transition: opacity 1.8s ease-in-out;
+    will-change: opacity;
+}
+
+#entrance::before,
+#entrance::after {
+    content: "";
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border: 1px solid #c7839e30;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+#entrance::after {
+    width: 530px;
+    height: 530px;
+}
+
+.entrance-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heart-mark {
+    width: 100px;
+    height: 100px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #ffffffa8;
+    border: 1px solid #e5c6d5;
+    color: var(--rose);
+    font-size: 48px;
+    box-shadow: 0 12px 40px #a56c8412;
+    margin-bottom: 22px;
+}
+
+.entrance-title {
+    font-size: clamp(58px, 10vw, 96px);
+    line-height: 1;
+    letter-spacing: 3px;
+    color: var(--deep);
+}
+
+.entrance-subtitle {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    margin-top: 18px;
+}
+
+.enter-button {
+    margin-top: 90px;
+    padding: 15px 25px;
+    background: #ffffff8c;
+    color: var(--deep);
+    border: 1px solid #d9afc2;
+    border-radius: 30px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+}
+
+.enter-button:hover {
+    background: var(--deep);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.enter-button:focus-visible {
+    outline: 2px solid var(--deep);
+    outline-offset: 4px;
+}
+
+.enter-button:disabled {
+    cursor: default;
+    opacity: .7;
+}
+
+.entrance-note {
+    margin-top: 15px;
+    font-size: 11px;
+    color: #b18b9c;
+    letter-spacing: 1px;
+}
+
+/* MEMBERS PAGE */
+
+#members-page[hidden] {
+    display: none !important;
+}
+
+#members-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 65px 24px 40px;
+
+    background: linear-gradient(
+        -45deg,
+        #fff0f5,
+        #f8d7e6,
+        #eec4e8,
+        #fbe4ed,
+        #f3c6dc
+    );
+
+    background-size: 400% 400%;
+    animation: pinkGradient 16s ease infinite;
+
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 1.8s ease-in-out;
+    will-change: opacity;
+}
+
+/* HEADER */
+
+.page-header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.small-label {
+    color: var(--rose);
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.page-title {
+    font-size: clamp(42px, 7vw, 65px);
+    color: var(--deep);
+    letter-spacing: 3px;
+}
+
+.page-subtitle {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* PROFILES */
+
+.member-section {
+    width: min(1050px, 100%);
+    margin: 0 auto;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    color: var(--deep);
+    font-size: 17px;
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+.section-heading::before,
+.section-heading::after {
+    content: "";
+    width: 48px;
+    height: 1px;
+    background: #dcb9c9;
+}
+
+.profile-grid {
+    display: grid;
+    gap: 18px;
+}
+
+.iris-grid {
+    grid-template-columns: repeat(2, minmax(0, 175px));
+    justify-content: center;
+    align-items: start;
+}
+
+.iris-grid > .profile {
+    width: 175px;
+    max-width: 175px;
+    min-width: 0;
+    height: fit-content;
+    justify-self: center;
+    align-self: start;
+}
+
+.babies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.babies-grid .profile {
+    flex: 0 1 175px;
+    width: 175px;
+}
+
+.profile {
+    position: relative;
+    min-width: 0;
+    min-height: 175px;
+    padding: 20px 9px;
+    border: 1px solid var(--line);
+    border-radius: 17px;
+    background: var(--card);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    box-shadow: 0 5px 18px #a56c8408;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.profile:hover {
+    transform: translateY(-5px);
+    background: #fff;
+    box-shadow: 0 12px 28px #a56c8417;
+}
+
+.avatar-wrap {
+    width: 88px;
+    height: 88px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #e5cbd7;
+    border-radius: 50%;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, #f6e4ec, #ead1de);
+    color: var(--deep);
+    font-size: 28px;
+}
+
+.avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.status {
+    position: absolute;
+    right: 0;
+    bottom: 3px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: #aaa0a5;
+}
+
+.status.online {
+    background: #54c99a;
+}
+
+.status.busy {
+    background: #e67e91;
+}
+
+.profile-name {
+    color: var(--text);
+    font-size: 12px;
+    letter-spacing: .5px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.profile[data-expand] {
+    cursor: pointer;
+}
+
+.profile[data-expand]:focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: 4px;
+}
+
+/* EXPANDABLE INFORMATION */
+
+.profile-info {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding-top: 0;
+    border-top: 0 solid var(--line);
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+
+    transition:
+        max-height .3s ease,
+        opacity .25s ease,
+        padding-top .3s ease,
+        border-width .3s ease;
+}
+
+.profile[data-expand].expanded .profile-info {
+    max-height: 220px;
+    opacity: 1;
+    padding-top: 12px;
+    margin-top: 2px;
+    border-top-width: 1px;
+}
+
+.section-divider {
+    width: min(500px, 80%);
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #e7cbd8,
+        transparent
+    );
+    margin: 45px auto 38px;
+}
+
+/* MUSIC PLAYER */
+
+.music-player {
+    position: fixed;
+    right: 22px;
+    bottom: 20px;
+    z-index: 20;
+    width: min(315px, calc(100vw - 28px));
+    padding: 14px 15px 12px;
+    border: 1px solid #e7cbd8;
+    border-radius: 14px;
+    background: rgba(255,249,251,.94);
+    box-shadow: 0 8px 28px #80546a18;
+    backdrop-filter: blur(12px);
+
+    display: grid;
+    gap: 10px;
+}
+
+.music-info {
+    display: grid;
+    gap: 3px;
+}
+
+.music-kicker {
+    color: var(--rose);
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.music-title {
+    color: var(--deep);
+    font-size: 14px;
+    letter-spacing: .3px;
+}
+
+.music-artist {
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: .5px;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.music-play {
+    width: 29px;
+    height: 29px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid #d9afc2;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--deep);
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.music-play:hover {
+    background: var(--deep);
+    color: #fff;
+}
+
+.music-time {
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    font-variant-numeric: tabular-nums;
+}
+
+.music-progress,
+.music-volume {
+    min-width: 0;
+    accent-color: var(--rose);
+    cursor: pointer;
+}
+
+.music-progress {
+    flex: 1;
+    width: 100%;
+}
+
+.music-volume-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.volume-symbol {
+    color: var(--rose);
+    font-size: 13px;
+}
+
+.music-volume {
+    width: 90px;
+}
+
+.music-player input:disabled {
+    cursor: not-allowed;
+    opacity: .45;
+}
+
+/* COUNTER AND FOOTER */
+
+.visit-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 44px;
+    margin: 55px auto 0;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.counterapi {
+    min-height: 35px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 22px;
+    color: #b99aaa;
+    font-size: 10px;
+    letter-spacing: 2px;
+    line-height: 2;
+}
+
+.footer .credit {
+    display: block;
+    margin-top: 5px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+    #members-page {
+        padding: 45px 15px 30px;
+    }
+
+    .babies-grid {
+        gap: 12px;
+    }
+
+    .babies-grid .profile {
+        flex-basis: 150px;
+    }
+
+    .profile {
+        min-height: 150px;
+        padding: 15px 6px;
+    }
+
+    .avatar-wrap {
+        width: 72px;
+        height: 72px;
+    }
+
+    .section-heading {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .iris-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .iris-grid > .profile {
+        width: 100%;
+        max-width: none;
+    }
+
+    .profile-name {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .music-player {
+        right: 14px;
+        bottom: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #entrance,
+    #members-page {
+        animation: none;
+        transition: none;
+    }
+
+    .profile-info,
+    .profile {
+        transition: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ENTRANCE PAGE -->
+
+<section id="entrance">
+    <div class="entrance-content">
+        <div class="heart-mark" aria-hidden="true">♡</div>
+
+        <h1 class="entrance-title">Iris'</h1>
+
+        <p class="entrance-subtitle">
+            tee - owmen | art - salam
+        </p>
+
+        <button
+            class="enter-button"
+            id="enterButton"
+            type="button"
+        >
+            CLICK TO ENTER
+        </button>
+
+    </div>
+</section>
+
+<!-- MEMBERS PAGE -->
+
+<section id="members-page" hidden>
+
+    <header class="page-header">
+        <h1 class="page-title">Iris'</h1>
+        <p class="page-subtitle">Pink Matter </p>
+    </header>
+
+    <!-- IRIS' PROFILES -->
+
+    <section class="member-section">
+        <h2 class="section-heading">Iris'</h2>
+
+        <div class="profile-grid iris-grid">
+
+            <article
+                class="profile"
+                tabindex="0"
+                role="button"
+                aria-expanded="false"
+                data-expand="true"
+                aria-label="Show Iris's information"
+            >
+                <div class="avatar-wrap">
+                    <div class="avatar">
+                        <img
+                            src="iris.png"
+                            alt="Iris"
+                            onerror="this.remove()"
+                        >
+                    </div>
+                    <span class="status"></span>
+                </div>
+
+                <p class="profile-name">Iris Tee-Owmen</p>
+
+                <div class="profile-info" aria-hidden="true">
+                    <span>
+                        Fujiwara | Tokugawa-Madison | Tee-Owmen
+                    </span>
+                </div>
+            </article>
+
+            <article
+                class="profile"
+                tabindex="0"
+                role="button"
+                aria-expanded="false"
+                data-expand="true"
+                aria-label="Show Alas's information"
+            >
+                <div class="avatar-wrap">
+                    <div class="avatar">
+                        <img
+                            src="alas.png"
+                            alt="Alas"
+                            onerror="this.remove()"
+                        >
+                    </div>
+                    <span class="status online"></span>
+                </div>
+
+                <p class="profile-name">Alas ArtSalam</p>
+
+                <div class="profile-info" aria-hidden="true">
+                    <span>
+                        Sicario | Moan | Lannister | Art | Yin |
+                        Kaliwete | Salam | Perwisyo
+                    </span>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- BABIES -->
+
+    <section class="member-section">
+        <h2 class="section-heading">babies</h2>
+
+        <div class="profile-grid babies-grid">
+
+            <article class="profile">
+                <div class="avatar-wrap">
+                    <div class="avatar">
+                        <img
+                            src="aiaka.png"
+                            alt="Aiaka"
+                            onerror="this.remove()"
+                        >
+                    </div>
+                    <span class="status"></span>
+                </div>
+
+                <p class="profile-name">Aiaka Owmen</p>
+            </article>
+
+            <article class="profile">
+                <div class="avatar-wrap">
+                    <div class="avatar">
+                        <img
+                            src="lili.png"
+                            alt="Amaltheia"
+                            onerror="this.remove()"
+                        >
+                    </div>
+                    <span class="status busy"></span>
+                </div>
+
+                <p class="profile-name">Amaltheia Li Owmen</p>
+            </article>
+
+            <article class="profile">
+                <div class="avatar-wrap">
+                    <div class="avatar">
+                        <img
+                            src="rai.png"
+                            alt="Rai"
+                            onerror="this.remove()"
+                        >
+                    </div>
+                    <span class="status"></span>
+                </div>
+
+                <p class="profile-name">Rai Scyla Owmen</p>
+            </article>
+
+            <article class="profile">
+                <div class="avatar-wrap">
+                    <div class="avatar">
+                        <img
+                            src="eve.png"
+                            alt="Evangeline"
+                            onerror="this.remove()"
+                        >
+                    </div>
+                    <span class="status"></span>
+                </div>
+
+                <p class="profile-name">Evangeline Owmen</p>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- MUSIC PLAYER -->
+
+    <div
+        class="music-player"
+        id="musicPlayer"
+        aria-label="Background music player"
+    >
+        <div class="music-info">
+            <span class="music-kicker">NOW PLAYING</span>
+            <span class="music-title">Pink Matter</span>
+            <span class="music-artist">Frank Ocean</span>
+        </div>
+
+        <div class="music-controls">
+            <button
+                type="button"
+                class="music-play"
+                id="musicToggle"
+                aria-label="Play music"
+                title="Play / pause"
+            >▶</button>
+
+            <span class="music-time" id="currentTime">0:00</span>
+
+            <input
+                class="music-progress"
+                id="musicProgress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                aria-label="Seek music"
+                disabled
+            >
+
+            <span class="music-time" id="duration">0:00</span>
+        </div>
+
+        <div class="music-volume-row">
+            <span class="volume-symbol" aria-hidden="true">♪</span>
+
+            <input
+                class="music-volume"
+                id="musicVolume"
+                type="range"
+                min="0"
+                max="1"
+                value="0.65"
+                step="0.01"
+                aria-label="Music volume"
+            >
+        </div>
+    </div>
+
+    <audio id="bgMusic" preload="metadata" loop>
+        <source
+            src="./Frank_Ocean_feat._Andr_3000_-_Pink_Matter_Album_Version_(mp3.pm).mp3"
+            type="audio/mpeg"
+        >
+        Your browser does not support audio playback.
+    </audio>
+
+    <!-- VISIT COUNTER -->
+
+    <div class="visit-counter">
+        <div
+            class="counterapi"
+            id="irisVisitCounter"
+            key="iris-homepage"
+            label="views"
+            noIcon="true"
+            noLink="true"
+        ></div>
+    </div>
+
+    <footer class="footer">
+        IRIS' — VOL. I
+        <span class="credit">THEY'D BE LIKE THAT</span>
+    </footer>
+
+</section>
+
+<script>
+/* ENTRANCE CROSS-FADE */
+
+const entrance = document.getElementById("entrance");
+const membersPage = document.getElementById("members-page");
+const enterButton = document.getElementById("enterButton");
+const bgMusic = document.getElementById("bgMusic");
+
+let entering = false;
+
+enterButton.addEventListener("click", function () {
+    if (entering) return;
+
+    entering = true;
+    enterButton.disabled = true;
+
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const duration = reduceMotion ? 0 : 1800;
+
+    // Reveal the members page in its transparent state.
+    membersPage.hidden = false;
+    membersPage.style.opacity = "0";
+    membersPage.style.pointerEvents = "none";
+
+    // Allow the browser to render the initial state.
+    requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+
+            // Fade in the members page.
+            membersPage.style.opacity = "1";
+            membersPage.style.pointerEvents = "auto";
+
+            // Fade out the entrance page.
+            entrance.style.opacity = "0";
+
+            // Start music after the visitor clicks.
+            bgMusic.play().catch(function () {});
+
+            // Finish after the fade-out duration.
+            window.setTimeout(function () {
+                entrance.hidden = true;
+                entrance.style.display = "none";
+
+                // Keep the members page visible.
+                membersPage.style.opacity = "";
+                membersPage.style.pointerEvents = "";
+            }, duration);
+        });
+    });
+});
+
+/* MUSIC PLAYER */
+
+const musicToggle = document.getElementById("musicToggle");
+const musicProgress = document.getElementById("musicProgress");
+const musicVolume = document.getElementById("musicVolume");
+const currentTimeLabel = document.getElementById("currentTime");
+const durationLabel = document.getElementById("duration");
+
+function formatTime(seconds) {
+    if (!Number.isFinite(seconds)) return "0:00";
+
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
+}
+
+function updatePlayButton() {
+    const playing = !bgMusic.paused;
+
+    musicToggle.textContent = playing ? "Ⅱ" : "▶";
+
+    musicToggle.setAttribute(
+        "aria-label",
+        playing ? "Pause music" : "Play music"
+    );
+}
+
+function updateProgress() {
+    currentTimeLabel.textContent = formatTime(bgMusic.currentTime);
+
+    if (
+        Number.isFinite(bgMusic.duration) &&
+        bgMusic.duration > 0
+    ) {
+        musicProgress.disabled = false;
+
+        musicProgress.value =
+            (bgMusic.currentTime / bgMusic.duration) * 100;
+
+        durationLabel.textContent = formatTime(bgMusic.duration);
+    } else {
+        musicProgress.disabled = true;
+        musicProgress.value = 0;
+        durationLabel.textContent = "0:00";
+    }
+}
+
+bgMusic.volume = Number(musicVolume.value);
+
+musicToggle.addEventListener("click", function () {
+    if (bgMusic.paused) {
+        bgMusic.play()
+            .then(updatePlayButton)
+            .catch(updatePlayButton);
+    } else {
+        bgMusic.pause();
+        updatePlayButton();
+    }
+});
+
+musicVolume.addEventListener("input", function () {
+    bgMusic.volume = Number(musicVolume.value);
+});
+
+musicProgress.addEventListener("input", function () {
+    if (
+        Number.isFinite(bgMusic.duration) &&
+        bgMusic.duration > 0
+    ) {
+        bgMusic.currentTime =
+            (Number(musicProgress.value) / 100) *
+            bgMusic.duration;
+    }
+});
+
+bgMusic.addEventListener("loadedmetadata", updateProgress);
+bgMusic.addEventListener("timeupdate", updateProgress);
+bgMusic.addEventListener("play", updatePlayButton);
+bgMusic.addEventListener("pause", updatePlayButton);
+
+/* EXPANDABLE PROFILES */
+
+document.querySelectorAll(".profile[data-expand]").forEach(
+    function (profile) {
+
+        function toggleProfile() {
+            const expanded = profile.classList.toggle("expanded");
+
+            profile.setAttribute(
+                "aria-expanded",
+                String(expanded)
+            );
+
+            const info = profile.querySelector(".profile-info");
+
+            if (info) {
+                info.setAttribute(
+                    "aria-hidden",
+                    String(!expanded)
+                );
+            }
+        }
+
+        profile.addEventListener("click", toggleProfile);
+
+        profile.addEventListener("keydown", function (event) {
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+                event.preventDefault();
+                toggleProfile();
+            }
+        });
+    }
+);
+
+/* VISIT COUNTER */
+
+(function () {
+    const counter = document.getElementById("irisVisitCounter");
+    const visitorKey = "iris_visitor_counted_v1";
+
+    try {
+        if (localStorage.getItem(visitorKey)) {
+            counter.setAttribute("readOnly", "true");
+        } else {
+            localStorage.setItem(visitorKey, "true");
+        }
+    } catch (error) {
+        // Continue if local storage is unavailable.
+    }
+
+    const script = document.createElement("script");
+
+    script.src =
+        "https://counterapi.com/c.js?ns=YOUR-USERNAME.github.io";
+
+    script.async = true;
+
+    document.body.appendChild(script);
+})();
+</script>
+
+</body>
+</html>
